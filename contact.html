@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact GeminAi | Request Access</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/451a2a9499.js" crossorigin="anonymous"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style_v3.css">
+</head>
+
+<body>
+
+    <!-- CSS Dynamic Background -->
+    <div class="css-dynamic-background"></div>
+
+    <!-- Minimal Brand Anchor -->
+    <div
+        style="position: fixed; top: 2rem; left: 2rem; z-index: 100; font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: 2px; color: white;">
+        <a href="index.html" style="text-decoration: none; color: white;">
+            Gemin<span style="color: var(--color-clarity);">Ai</span> <span style="font-weight: 300;">Aero</span>
+        </a>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="narrative-section visible"
+        style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+
+        <div class="cta-container" style="max-width: 600px; width: 100%; margin-top: 4rem;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">Request Access</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; text-align: center;">
+                Join the next generation of airport operations.
+            </p>
+
+            <form id="contact-form" class="minimal-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="17c5d260-233f-4dfd-849f-7c7f7d7bfd93">
+                <!-- Optional: Custom Subject -->
+                <input type="hidden" name="subject" value="New Submission from GeminAi Website">
+                <!-- Optional: Honeypot for Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="name"
+                        style="display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">FULL
+                        NAME <span style="color: #ff4500;">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="company"
+                        style="display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">COMPANY
+                        <span style="color: #ff4500;">*</span></label>
+                    <input type="text" id="company" name="company" placeholder="Your Company" required>
+                </div>
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="role"
+                        style="display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">ROLE
+                        <span style="color: #ff4500;">*</span></label>
+                    <input type="text" id="role" name="role" placeholder="Your Role" required>
+                </div>
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="email"
+                        style="display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">WORK
+                        EMAIL <span style="color: #ff4500;">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="name@company.com" required>
+                </div>
+
+                <div id="form-result" style="margin-bottom: 1rem; text-align: center; display: none;"></div>
+
+                <button type="submit" class="btn-glow">Request Access</button>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+                    <span style="color: #ff4500;">*</span> Indicates required field
+                </p>
+            </form>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">
+                    <i class="fa-solid fa-arrow-left" style="margin-right: 5px;"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3>Request Received</h3>
+            <p>Thank you for your interest in GeminAi. Our team will review your request and contact you shortly.</p>
+            <button id="close-modal" class="btn-glow"
+                style="margin-top: 1.5rem; width: auto; padding: 12px 30px;">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; GeminAi 2026. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/script_v2.js"></script>
+</body>
+
+</html>
