@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact GeminAi | Request Access</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/451a2a9499.js" crossorigin="anonymous"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style_v3.css">
+</head>
+
+<body>
+
+    <!-- CSS Dynamic Background -->
+    <div class="css-dynamic-background"></div>
+
+    <!-- Minimal Brand Anchor -->
+    <div
+        style="position: fixed; top: 2rem; left: 2rem; z-index: 100; font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: 2px; color: white;">
+        <a href="index.html" style="text-decoration: none; color: white;">
+            Gemin<span style="color: var(--color-clarity);">Ai</span> <span style="font-weight: 300;">Aero</span>
+        </a>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="narrative-section visible"
+        style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+
+        <div class="cta-container" style="max-width: 600px; width: 100%; margin-top: 4rem;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">Request Access</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; text-align: center;">
+                Join the next generation of airport operations.
+            </p>
+
+            <form id="contact-form" class="minimal-form" action="https://formspree.io/f/mblwenep" method="POST">
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="name"
+                        style="display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">FULL
+                        NAME <span style="color: #ff4500;">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="company"
+                        style="display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">COMPANY
+                        <span style="color: #ff4500;">*</span></label>
+                    <input type="text" id="company" name="company" placeholder="Your Company" required>
+                </div>
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="title"
+                        style="display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">TITLE
+                        <span style="color: #ff4500;">*</span></label>
+                    <input type="text" id="title" name="title" placeholder="Your Title" required>
+                </div>
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="email"
+                        style="display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">WORK
+                        EMAIL <span style="color: #ff4500;">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="name@company.com" required>
+                </div>
+                <button type="submit" class="btn-glow">Request Access</button>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+                    <span style="color: #ff4500;">*</span> Indicates required field
+                </p>
+            </form>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">
+                    <i class="fa-solid fa-arrow-left" style="margin-right: 5px;"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; GeminAi 2026. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/script_v2.js"></script>
+</body>
+
+</html>
