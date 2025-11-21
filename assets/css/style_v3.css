@@ -1,0 +1,879 @@
+/* GeminAi Psychological Design System - v3.2 (Scroll Animations) */
+
+:root {
+    /* Deep, Subconscious Colors */
+    --bg-void: #000000;
+    /* Pure black for the focused look */
+    --bg-calm: #0b101a;
+    --text-primary: #ffffff;
+    --text-muted: #8b9bb4;
+
+    /* Emotional Triggers */
+    --color-chaos: #ff4500;
+    /* Orange-Red for chaos/alert */
+    --color-clarity: #ff4500;
+    /* Unified Brand Orange (Same as Chaos) */
+    --color-relief: #ff7b00;
+    /* Lighter Orange for relief */
+
+    /* Typography */
+    --font-narrative: 'Inter', sans-serif;
+    --font-impact: 'Outfit', sans-serif;
+
+    /* Scroll Physics */
+    --section-stickiness: 50vh;
+    /* Adjust this to control how "sticky" the sections are */
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-narrative);
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Narrative Wrapper for Sticky Effect */
+.narrative-wrapper {
+    height: calc(100vh + var(--section-stickiness));
+    position: relative;
+    width: 100%;
+}
+
+.narrative-wrapper .narrative-section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-impact);
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Utility */
+.spotlight-text {
+    color: var(--color-clarity);
+    text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+/* Text Cycler */
+#text-cycler {
+    display: inline-block;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    color: var(--color-clarity);
+    border-bottom: 3px solid var(--color-clarity);
+    min-width: 200px;
+    /* Prevent layout shift */
+    text-align: center;
+}
+
+/* Sections */
+.narrative-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0.15;
+    /* Default transparent state */
+    transition: opacity 0.8s ease-in-out;
+    filter: blur(2px);
+    /* Optional: adds to the out-of-focus effect */
+}
+
+.narrative-section.focused {
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* Backgrounds */
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--bg-void), rgba(0, 0, 0, 0.7), var(--bg-void));
+    z-index: -1;
+}
+
+/* Section 1: Hook (Focused Hero) */
+.section-hook {
+    text-align: center;
+}
+
+.hook-headline {
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-bottom: 2rem;
+    max-width: 1200px;
+}
+
+.hook-subhead {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 4rem;
+}
+
+/* Section 2: Chaos (Scroll Text) */
+/* Section 2: Chaos (Fading Text) */
+.section-chaos {
+    padding: 4rem 0;
+    background: var(--bg-void);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 100vh;
+    /* Full screen height for focus */
+}
+
+.scroll-text-container {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+}
+
+.scroll-text-row {
+    font-family: var(--font-impact);
+    font-size: clamp(2rem, 6vw, 6rem);
+    /* Responsive size */
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-chaos);
+    /* Use the orange-red color */
+    text-transform: uppercase;
+
+    /* Grid Stacking */
+    grid-area: 1 / 1;
+
+    /* Animation State */
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1s ease, transform 1s ease;
+    pointer-events: none;
+    width: 90%;
+    /* Prevent overflow */
+    margin: 0 auto;
+}
+
+.scroll-text-row.active-row {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
+}
+
+/* Section 3: Clarity */
+.section-clarity {
+    text-align: center;
+}
+
+.clarity-visual {
+    width: 100%;
+    max-width: 900px;
+    height: 50vh;
+    margin: 2rem auto;
+    background: rgba(255, 69, 0, 0.05);
+    border: 1px solid rgba(255, 69, 0, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 0 50px rgba(255, 69, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    /* Ensure background image stays inside */
+}
+
+/* Section 4: Transformation Carousel */
+.section-transformation {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr;
+    /* Single column stack */
+    width: 100%;
+    max-width: 800px;
+    /* Constrain width for the centered card */
+    margin: 0 auto;
+    min-height: 450px;
+    /* Reserve space for the cards */
+    position: relative;
+}
+
+.transform-card {
+    grid-area: 1 / 1;
+    /* Stack all cards on top of each other */
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 3rem;
+    min-height: 350px;
+    border-radius: 16px;
+    border-left: 3px solid transparent;
+
+    /* Hidden State (for carousel) */
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+    transition: all 1.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.transform-card.active-card {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+    border-left-color: var(--color-clarity);
+    background: rgba(255, 255, 255, 0.06);
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.transform-card p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* CTA */
+.cta-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.minimal-form input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px 0;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.minimal-form input:focus {
+    outline: none;
+    border-bottom-color: var(--color-clarity);
+}
+
+.btn-glow {
+    background: var(--color-clarity);
+    color: var(--bg-void);
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.btn-glow:hover {
+    box-shadow: 0 0 50px rgba(255, 69, 0, 0.6);
+    transform: scale(1.02);
+}
+
+/* Animations */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Breathing Background Animation */
+.breathing-bg {
+    animation: breathe 10s ease-in-out infinite alternate;
+}
+
+@keyframes breathe {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .narrative-section {
+        padding: 1.5rem;
+        min-height: auto;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .section-hook {
+        min-height: 100vh;
+    }
+
+    .hook-headline {
+        font-size: 3rem;
+    }
+
+    .scroll-text-row {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        width: 100%;
+        padding: 0 1rem;
+        white-space: normal;
+        overflow-wrap: break-word;
+        text-align: center;
+    }
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    opacity: 0.6;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* Slide Animations */
+.slide-from-left,
+.slide-from-right {
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+
+.slide-from-left {
+    transform: translateX(-100px);
+}
+
+.slide-from-right {
+    transform: translateX(100px);
+}
+
+/* Trigger when section is focused */
+.narrative-section.focused .slide-from-left,
+.narrative-section.focused .slide-from-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Dynamic CSS Background for Contact Page */
+.css-dynamic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--bg-void);
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(255, 69, 0, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(255, 69, 0, 0.2) 0%, transparent 50%),
+        linear-gradient(to bottom, #000000, #0b101a);
+    animation: bgShift 10s ease-in-out infinite alternate;
+}
+
+/* Subtle grid overlay for tech feel */
+.css-dynamic-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+@keyframes bgShift {
+    0% {
+        background-size: 100% 100%, 100% 100%, 100% 100%;
+    }
+
+    100% {
+        background-size: 120% 120%, 110% 110%, 100% 100%;
+    }
+}
+
+/* Section 1.5: Impact (Metrics) */
+.section-impact {
+    background: var(--bg-void);
+    text-align: center;
+}
+
+.metrics-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 3rem;
+    padding: 0 2rem;
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1 1 250px;
+    /* Grow, shrink, base width */
+    min-width: 250px;
+    max-width: 350px;
+}
+
+/* Tech separator line between metrics */
+.metric-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -2rem;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--color-muted), transparent);
+    opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+    .metric-item:not(:last-child)::after {
+        display: none;
+    }
+
+    .metrics-grid {
+        gap: 1.5rem;
+    }
+
+    /* Mobile-specific metric sizing */
+    .impact-header {
+        margin-bottom: 1rem !important;
+    }
+
+    .impact-header h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .impact-header p {
+        font-size: 0.9rem !important;
+    }
+
+    .metric-value {
+        font-size: 3rem !important;
+    }
+
+    .metric-suffix {
+        font-size: 1.75rem !important;
+    }
+
+    .metric-label {
+        font-size: 0.85rem !important;
+    }
+}
+
+.metric-value-container {
+    display: flex;
+    align-items: baseline;
+    font-family: var(--font-impact);
+    color: var(--color-clarity);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
+}
+
+.metric-value {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.metric-suffix {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-left: 5px;
+    opacity: 0.8;
+}
+
+.metric-label {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.metric-context {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.5rem;
+    max-width: 200px;
+}
+/* =========================================
+   NEW SECTIONS (Trust, Integrations, Footer)
+   ========================================= */
+
+/* Trust Bar */
+.section-trust {
+    background: var(--bg-void);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trust-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.trust-grid:hover {
+    opacity: 1;
+}
+
+.trust-item {
+    font-family: var(--font-impact);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+.trust-item:hover {
+    filter: grayscale(0%);
+    color: var(--color-clarity);
+    transform: translateY(-2px);
+}
+
+/* Integrations Section */
+.section-integrations {
+    background: linear-gradient(to bottom, var(--bg-void), #05080d);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.integration-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.integration-card:hover {
+    background: rgba(255, 69, 0, 0.05);
+    border-color: var(--color-clarity);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.integration-card i {
+    font-size: 2.5rem;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.integration-card:hover i {
+    color: var(--color-clarity);
+}
+
+.integration-card span {
+    font-family: var(--font-impact);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+/* Expanded Footer */
+.site-footer-expanded {
+    background: #05080d;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 4rem 2rem 2rem;
+    color: var(--text-muted);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footer-brand {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-brand h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    margin-left: 0; /* Reset centering */
+}
+
+.footer-brand p {
+    margin-left: 0; /* Reset centering */
+    max-width: 300px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-column h4 {
+    color: var(--text-primary);
+    font-family: var(--font-impact);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-column a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.footer-column a:hover {
+    color: var(--color-clarity);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .trust-grid {
+        gap: 1.5rem;
+    }
+    
+    .trust-item {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================
+   SUCCESS MODAL (Glassmorphism)
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 69, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    border: 1px solid rgba(255, 69, 0, 0.3);
+}
+
+.modal-icon i {
+    font-size: 2.5rem;
+    color: var(--color-clarity);
+    filter: drop-shadow(0 0 10px var(--color-clarity));
+}
+
+.modal-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.modal-content p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+}
