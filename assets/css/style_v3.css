@@ -45,6 +45,31 @@ body {
     overflow-x: hidden;
 }
 
+/* Persistent header contact shortcut */
+.header-contact-link {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-clarity);
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.header-contact-link:hover {
+    background: rgba(255, 69, 0, 0.12);
+}
+
+.header-contact-link:focus-visible {
+    outline: 2px solid var(--color-clarity);
+    outline-offset: 2px;
+}
+
 /* Narrative Wrapper for Sticky Effect */
 .narrative-wrapper {
     height: calc(100vh + var(--section-stickiness));
