@@ -311,10 +311,18 @@ p {
 }
 
 .minimal-form textarea {
+    background: #111827;
+    color: #d1d5db;
+    padding: 15px 12px;
     font-family: var(--font-narrative);
     line-height: 1.5;
     resize: vertical;
     min-height: 150px;
+}
+
+.minimal-form textarea::placeholder {
+    color: #9ca3af;
+    opacity: 1;
 }
 
 .minimal-form input:focus,
